@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Cart from "../Cart/Cart";
 import Meal from "../Meal/Meal";
 import "./Meals.css";
 
 const Meals = () => {
   const [meals, setMeals] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?f=a`;
@@ -13,13 +15,16 @@ const Meals = () => {
   }, []);
 
   const handleAddToCart = (props) => {
-    console.log("clicked", props);
+    let newCart = [];
+    // console.log(props);
+    newCart = [...cart, props];
+    // newCart.push(props);
+    setCart(newCart);
   };
 
   return (
     <div className="shop-container">
       <div className="products-container">
-        {/* <h1>meals: {meals.length}</h1> */}
         {meals.map((meal) => (
           <Meal
             key={meal.idMeal}
@@ -29,8 +34,8 @@ const Meals = () => {
         ))}
       </div>
       <div className="cart-container">
-        {/* <Cart cart={cart} /> */}
-        <h1>Cart Summary</h1>
+        <Cart cart={cart} key={Math.floor(Math.random() * 1000)} />
+        {console.log(Math.random(cart.length))}
       </div>
     </div>
   );
