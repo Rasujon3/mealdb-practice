@@ -12,6 +12,10 @@ const Meals = () => {
       .then((data) => setMeals(data.meals));
   }, []);
 
+  const handleAddToCart = (props) => {
+    console.log("clicked", props);
+  };
+
   return (
     <div className="shop-container">
       <div className="products-container">
@@ -20,7 +24,7 @@ const Meals = () => {
           <Meal
             key={meal.idMeal}
             product={meal}
-            // handleAddToCart={handleAddToCart}
+            handleAddToCart={handleAddToCart}
           />
         ))}
       </div>
