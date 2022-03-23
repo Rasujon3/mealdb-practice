@@ -34,8 +34,7 @@ const Meals = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} key={Math.floor(Math.random() * 1000)} />
-        {console.log(Math.random(cart.length))}
+        <Cart cart={cart} />
       </div>
     </div>
   );
